@@ -1,0 +1,76 @@
+<script>
+    let playerSelection;
+    let computerSelection;
+    let playerWins = 0;
+    let playerLosses = 0;
+    let playerDraws = 0;
+    let log = false;
+    
+    
+    function computerPlay() {
+        let options = ['rock', 'paper', 'scissor'];
+        let random = Math.floor(Math.random() * 3);
+        if (log == true) {
+            console.log('computer chose ' + options[random]);
+        }
+        return options[random];
+    }
+
+    function playerInput() {
+        playerSelection = prompt("Choose rock, paper or scissor").toLowerCase();
+        if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissor') {
+            if (log == true) {
+                console.log('Player chose ' + playerSelection);
+            }
+                return playerSelection;
+        } else {
+            return 'playerInputError';
+        }
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        const inputErrorMessage = 'Player input was not valid';
+        let drawMessage = 'It\'s a draw! You both chose ' + computerSelection + '\n';
+        let loseMessage = 'You lose! ' + computerSelection + ' beats ' + playerSelection + '\n';
+        let winMessage = 'You win! ' + playerSelection + ' beats ' + computerSelection + '\n';
+
+        if ((playerSelection == 'rock' && computerSelection == 'scissor') ||
+                (playerSelection == 'paper' && computerSelection == 'rock') ||
+                (playerSelection == 'scissor' && computerSelection == 'paper')) {
+            console.log(winMessage);
+            playerWins++;
+            return winMessage;
+        } else if (playerSelection == computerSelection) {
+            console.log(drawMessage);
+            playerDraws++;
+            return drawMessage;
+        } else if (playerSelection == 'playerInputError') {
+            console.log(inputErrorMessage);
+        } else {
+            console.log(loseMessage);
+            playerLosses++;
+            return loseMessage;
+        }
+    }
+
+    function game() {
+        let counter = 0;
+        while (counter < 5) {
+            if (log == true) {
+                console.log(counter);
+            }
+
+            computerSelection = computerPlay();
+            playerSelection = playerInput();
+            playRound(playerSelection, computerSelection);
+            counter++;
+        }
+        if (playerWins > playerLosses) {
+            console.log('You win this game with ' + playerWins + ' wins!');
+        } else {
+            console.log('You lose this game with ' + playerLosses + ' losses!')
+        }
+    }
+
+    game();
+</script>
