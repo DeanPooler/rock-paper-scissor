@@ -24,6 +24,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body, html{
+    padding-top: 50px;
 	line-height: 1;
 }
 ol, ul {
@@ -40,4 +41,32 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.container {
+    margin: auto;
+    width: 50%;
+    height: 400px;
+}
+
+.display {
+    height: 100%;
+    border: 1px solid rgb(150, 150, 150);    
+}
+
+.display span {
+    display: block;
+	font-size: 1.5em;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding-top: 20px;
+}
+
+.controls button {
+    padding: 10px 20px 10px 20px;
+    margin: 0px 15px 0px 15px;
 }
